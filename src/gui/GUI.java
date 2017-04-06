@@ -322,6 +322,228 @@ public class GUI extends JFrame {
 		chatPanel = new JPanel();
 		chatPanel.setBounds(0, 0, 894, 672);
 		chatPanel.setVisible(false);
+		
+				logInPanel = new JPanel();
+				logInPanel.setBounds(0, 0, 894, 671);
+				logInPanel.setBackground(Color.getHSBColor(210 / 360.0f, 0.48f, 0.33f));
+				basePanel.add(logInPanel);
+				logInPanel.setLayout(null);
+				
+						logInButton = new JButton("Entrar");
+						logInButton.setForeground(Color.WHITE);
+						logInButton.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent arg0) {
+								String path = "repChat//" + userField.getText() + "//";
+								new File(path).mkdir();
+								repChat.setBasepath(path);
+								control.logIn(userField.getText(), new String(passwordField.getPassword()));
+							}
+						});
+						logInButton.setBorder(null);
+						logInButton.setBackground(new Color(0, 153, 153));
+						logInButton.setFont(new Font("Dialog", Font.BOLD, 14));
+						logInButton.setBounds(327, 480, 240, 40);
+						logInButton.setFocusPainted(false);
+						logInPanel.add(logInButton);
+						
+								separator = new JSeparator();
+								separator.setForeground(Color.LIGHT_GRAY);
+								separator.setBackground(Color.LIGHT_GRAY);
+								separator.setBounds(327, 440, 240, 1);
+								logInPanel.add(separator);
+								
+										separator1 = new JSeparator();
+										separator1.setForeground(Color.LIGHT_GRAY);
+										separator1.setBackground(Color.LIGHT_GRAY);
+										separator1.setBounds(327, 400, 240, 1);
+										logInPanel.add(separator1);
+										
+												separator2 = new JSeparator();
+												separator2.setForeground(Color.LIGHT_GRAY);
+												separator2.setBackground(Color.LIGHT_GRAY);
+												separator2.setBounds(327, 360, 240, 1);
+												logInPanel.add(separator2);
+												
+														iconUser = new JLabel("");
+														iconUser.setHorizontalAlignment(SwingConstants.CENTER);
+														iconUser.setIcon(new ImageIcon(GUI.class.getResource("/user.png")));
+														iconUser.setBounds(328, 361, 38, 38);
+														logInPanel.add(iconUser);
+														
+																iconPassword = new JLabel("");
+																iconPassword.setHorizontalAlignment(SwingConstants.CENTER);
+																iconPassword.setIcon(new ImageIcon(GUI.class.getResource("/padlock.png")));
+																iconPassword.setBounds(328, 401, 38, 38);
+																logInPanel.add(iconPassword);
+																
+																		passwordField = new JPasswordField();
+																		passwordField.setCaretColor(Color.WHITE);
+																		passwordField.setForeground(Color.WHITE);
+																		passwordField.setFont(new Font("Dialog", Font.PLAIN, 14));
+																		passwordField.setHorizontalAlignment(SwingConstants.LEFT);
+																		passwordField.setBackground(Color.getHSBColor(210 / 360.0f, 0.48f, 0.33f));
+																		passwordField.setBorder(null);
+																		passwordField.setBounds(367, 402, 200, 38);
+																		passwordField.addKeyListener(new KeyAdapter() {
+																			public void keyPressed(KeyEvent k) {
+																				if (k.getKeyCode() == KeyEvent.VK_ENTER) {
+																					logInButton.doClick();
+																				}
+																			}
+																		});
+																		logInPanel.add(passwordField);
+																		
+																				userField = new JTextField();
+																				userField.setCaretColor(Color.WHITE);
+																				userField.addKeyListener(new KeyAdapter() {
+																					public void keyPressed(KeyEvent k) {
+																						if (k.getKeyCode() == KeyEvent.VK_ENTER) {
+																							logInButton.doClick();
+																						}
+																					}
+																				});
+																				userField.setForeground(Color.WHITE);
+																				userField.setFont(new Font("Dialog", Font.PLAIN, 14));
+																				userField.setBorder(null);
+																				userField.setBackground(Color.getHSBColor(210 / 360.0f, 0.48f, 0.33f));
+																				userField.setBounds(367, 362, 200, 38);
+																				logInPanel.add(userField);
+																				userField.setColumns(10);
+																				
+																						singInLabel = new JLabel("Cadastre-se!");
+																						singInLabel.addMouseListener(new MouseAdapter() {
+																							@Override
+																							public void mouseClicked(MouseEvent arg0) {
+																								singInPanel.setVisible(true);
+																								logInPanel.setVisible(false);
+																								unlockSingIn();
+																								dayComboBox.setEditable(false);
+																								yearComboBox.setEditable(false);
+																								monthComboBox.setEditable(false);
+																								genderComboBox.setEditable(false);
+																							}
+																						});
+																						singInLabel.setHorizontalAlignment(SwingConstants.CENTER);
+																						singInLabel.setForeground(Color.WHITE);
+																						singInLabel.setFont(new Font("Dialog", Font.BOLD, 12));
+																						singInLabel.setBounds(388, 531, 116, 40);
+																						logInPanel.add(singInLabel);
+																						
+																								label = new JLabel("");
+																								label.setIcon(new ImageIcon(GUI.class.getResource("/Logo_Principal.png")));
+																								label.setHorizontalAlignment(SwingConstants.CENTER);
+																								label.setBorder(null);
+																								label.setBounds(346, 209, 200, 117);
+																								
+																										logInPanel.add(label);
+																										
+																												JPanel IPpanel = new JPanel();
+																												IPpanel.setBorder(new MatteBorder(1, 0, 1, 0, (Color) Color.WHITE));
+																												IPpanel.setBackground(Color.getHSBColor(210 / 360.0f, 0.48f, 0.33f));
+																												IPpanel.setBounds(633, 476, 251, 135);
+																												logInPanel.add(IPpanel);
+																												IPpanel.setLayout(null);
+																												IPpanel.setVisible(false);
+																												
+																														lblIp = new JLabel("IP:");
+																														lblIp.setForeground(Color.WHITE);
+																														lblIp.setFont(new Font("Dialog", Font.PLAIN, 14));
+																														lblIp.setBounds(22, 34, 23, 30);
+																														IPpanel.add(lblIp);
+																														
+																																textIP1 = new JTextField();
+																																textIP1.setBorder(null);
+																																
+																																		textIP1.setBounds(55, 40, 182, 23);
+																																		IPpanel.add(textIP1);
+																																		textIP1.setColumns(10);
+																																		
+																																				JLabel lblPorta = new JLabel("Porta:");
+																																				lblPorta.setForeground(Color.WHITE);
+																																				lblPorta.setFont(new Font("Dialog", Font.PLAIN, 14));
+																																				lblPorta.setBounds(22, 75, 46, 30);
+																																				IPpanel.add(lblPorta);
+																																				
+																																						textPorta = new JTextField();
+																																						textPorta.setBorder(null);
+																																						textPorta.setColumns(10);
+																																						textPorta.setBounds(78, 81, 90, 23);
+																																						IPpanel.add(textPorta);
+																																						
+																																								JButton btnOk = new JButton("OK");
+																																								btnOk.addActionListener(new ActionListener() {
+																																									public void actionPerformed(ActionEvent e) {
+																																										serverPort = Integer.parseInt(textPorta.getText());
+																																										serverIP = textIP1.getText();
+																																										if (validPort(serverPort)) {
+																																											control.setPort(serverPort);
+																																											lbl_portErro.setText(null);
+																																										} else {
+																																											lbl_portErro.setText("*Número de porta não válida");
+																																										}
+																																										control.setIp(serverIP);
+																																										IPpanel.setVisible(false);
+
+																																									}
+																																								});
+																																								btnOk.setForeground(Color.WHITE);
+																																								btnOk.setFont(new Font("Dialog", Font.BOLD, 14));
+																																								btnOk.setFocusPainted(false);
+																																								btnOk.setBorder(null);
+																																								btnOk.setBackground(new Color(0, 153, 153));
+																																								btnOk.setBounds(191, 79, 46, 23);
+																																								IPpanel.add(btnOk);
+																																								
+																																										lbl_portErro = new JLabel("");
+																																										lbl_portErro.setFont(new Font("Tahoma", Font.PLAIN, 9));
+																																										lbl_portErro.setForeground(Color.WHITE);
+																																										lbl_portErro.setBounds(78, 104, 159, 14);
+																																										IPpanel.add(lbl_portErro);
+																																										
+																																												lbl_ipErro = new JLabel("");
+																																												lbl_ipErro.setForeground(Color.WHITE);
+																																												lbl_ipErro.setFont(new Font("Tahoma", Font.PLAIN, 9));
+																																												lbl_ipErro.setBounds(55, 62, 159, 14);
+																																												IPpanel.add(lbl_ipErro);
+																																												
+																																														btn_ip = new JButton("");
+																																														btn_ip.addActionListener(new ActionListener() {
+																																															boolean show = false;
+
+																																															public void actionPerformed(ActionEvent arg0) {
+																																																{
+																																																	if (!show) {
+																																																		IPpanel.setVisible(true);
+																																																		show = true;
+																																																	} else {
+																																																		IPpanel.setVisible(false);
+																																																		show = false;
+																																																	}
+																																																}
+
+																																															}
+																																														});
+																																														btn_ip.setIcon(new ImageIcon(GUI.class.getResource("/settings.png")));
+																																														btn_ip.setBounds(828, 622, 56, 38);
+																																														btn_ip.setBackground(Color.getHSBColor(210 / 360.0f, 0.48f, 0.33f));
+																																														btn_ip.setBorderPainted(false);
+																																														btn_ip.setContentAreaFilled(false);
+																																														btn_ip.setFocusPainted(false);
+																																														logInPanel.add(btn_ip);
+																																														
+																																																nickErro = new JLabel("");
+																																																nickErro.setForeground(Color.WHITE);
+																																																nickErro.setFont(new Font("Dialog", Font.PLAIN, 12));
+																																																nickErro.setBorder(null);
+																																																nickErro.setBounds(577, 360, 182, 38);
+																																																logInPanel.add(nickErro);
+																																																
+																																																		passwordErro = new JLabel("");
+																																																		passwordErro.setForeground(Color.WHITE);
+																																																		passwordErro.setFont(new Font("Dialog", Font.PLAIN, 12));
+																																																		passwordErro.setBorder(null);
+																																																		passwordErro.setBounds(577, 400, 182, 38);
+																																																		logInPanel.add(passwordErro);
 
 		singInPanel = new JPanel();
 		singInPanel.setBounds(0, 0, 894, 671);
@@ -802,228 +1024,6 @@ public class GUI extends JFrame {
 		label_Verif.setFont(new Font("Dialog", Font.BOLD, 14));
 		label_Verif.setBounds(39, 573, 320, 20);
 		singInPanel.add(label_Verif);
-
-		logInPanel = new JPanel();
-		logInPanel.setBounds(0, 0, 894, 671);
-		logInPanel.setBackground(Color.getHSBColor(210 / 360.0f, 0.48f, 0.33f));
-		basePanel.add(logInPanel);
-		logInPanel.setLayout(null);
-
-		logInButton = new JButton("Entrar");
-		logInButton.setForeground(Color.WHITE);
-		logInButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				String path = "repChat//" + userField.getText() + "//";
-				new File(path).mkdir();
-				repChat.setBasepath(path);
-				control.logIn(userField.getText(), new String(passwordField.getPassword()));
-			}
-		});
-		logInButton.setBorder(null);
-		logInButton.setBackground(new Color(0, 153, 153));
-		logInButton.setFont(new Font("Dialog", Font.BOLD, 14));
-		logInButton.setBounds(327, 480, 240, 40);
-		logInButton.setFocusPainted(false);
-		logInPanel.add(logInButton);
-
-		separator = new JSeparator();
-		separator.setForeground(Color.LIGHT_GRAY);
-		separator.setBackground(Color.LIGHT_GRAY);
-		separator.setBounds(327, 440, 240, 1);
-		logInPanel.add(separator);
-
-		separator1 = new JSeparator();
-		separator1.setForeground(Color.LIGHT_GRAY);
-		separator1.setBackground(Color.LIGHT_GRAY);
-		separator1.setBounds(327, 400, 240, 1);
-		logInPanel.add(separator1);
-
-		separator2 = new JSeparator();
-		separator2.setForeground(Color.LIGHT_GRAY);
-		separator2.setBackground(Color.LIGHT_GRAY);
-		separator2.setBounds(327, 360, 240, 1);
-		logInPanel.add(separator2);
-
-		iconUser = new JLabel("");
-		iconUser.setHorizontalAlignment(SwingConstants.CENTER);
-		iconUser.setIcon(new ImageIcon("Icons\\user.png"));
-		iconUser.setBounds(328, 361, 38, 38);
-		logInPanel.add(iconUser);
-
-		iconPassword = new JLabel("");
-		iconPassword.setHorizontalAlignment(SwingConstants.CENTER);
-		iconPassword.setIcon(new ImageIcon("Icons\\padlock.png"));
-		iconPassword.setBounds(328, 401, 38, 38);
-		logInPanel.add(iconPassword);
-
-		passwordField = new JPasswordField();
-		passwordField.setCaretColor(Color.WHITE);
-		passwordField.setForeground(Color.WHITE);
-		passwordField.setFont(new Font("Dialog", Font.PLAIN, 14));
-		passwordField.setHorizontalAlignment(SwingConstants.LEFT);
-		passwordField.setBackground(Color.getHSBColor(210 / 360.0f, 0.48f, 0.33f));
-		passwordField.setBorder(null);
-		passwordField.setBounds(367, 402, 200, 38);
-		passwordField.addKeyListener(new KeyAdapter() {
-			public void keyPressed(KeyEvent k) {
-				if (k.getKeyCode() == KeyEvent.VK_ENTER) {
-					logInButton.doClick();
-				}
-			}
-		});
-		logInPanel.add(passwordField);
-
-		userField = new JTextField();
-		userField.setCaretColor(Color.WHITE);
-		userField.addKeyListener(new KeyAdapter() {
-			public void keyPressed(KeyEvent k) {
-				if (k.getKeyCode() == KeyEvent.VK_ENTER) {
-					logInButton.doClick();
-				}
-			}
-		});
-		userField.setForeground(Color.WHITE);
-		userField.setFont(new Font("Dialog", Font.PLAIN, 14));
-		userField.setBorder(null);
-		userField.setBackground(Color.getHSBColor(210 / 360.0f, 0.48f, 0.33f));
-		userField.setBounds(367, 362, 200, 38);
-		logInPanel.add(userField);
-		userField.setColumns(10);
-
-		singInLabel = new JLabel("Cadastre-se!");
-		singInLabel.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				singInPanel.setVisible(true);
-				logInPanel.setVisible(false);
-				unlockSingIn();
-				dayComboBox.setEditable(false);
-				yearComboBox.setEditable(false);
-				monthComboBox.setEditable(false);
-				genderComboBox.setEditable(false);
-			}
-		});
-		singInLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		singInLabel.setForeground(Color.WHITE);
-		singInLabel.setFont(new Font("Dialog", Font.BOLD, 12));
-		singInLabel.setBounds(388, 531, 116, 40);
-		logInPanel.add(singInLabel);
-
-		label = new JLabel("");
-		label.setIcon(new ImageIcon("Icons\\2_Flat_logo_on_transparent_114x74.png"));
-		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setBorder(null);
-		label.setBounds(346, 209, 200, 117);
-
-		logInPanel.add(label);
-
-		JPanel IPpanel = new JPanel();
-		IPpanel.setBorder(new MatteBorder(1, 0, 1, 0, (Color) Color.WHITE));
-		IPpanel.setBackground(Color.getHSBColor(210 / 360.0f, 0.48f, 0.33f));
-		IPpanel.setBounds(633, 476, 251, 135);
-		logInPanel.add(IPpanel);
-		IPpanel.setLayout(null);
-		IPpanel.setVisible(false);
-
-		lblIp = new JLabel("IP:");
-		lblIp.setForeground(Color.WHITE);
-		lblIp.setFont(new Font("Dialog", Font.PLAIN, 14));
-		lblIp.setBounds(22, 34, 23, 30);
-		IPpanel.add(lblIp);
-
-		textIP1 = new JTextField();
-		textIP1.setBorder(null);
-
-		textIP1.setBounds(55, 40, 182, 23);
-		IPpanel.add(textIP1);
-		textIP1.setColumns(10);
-
-		JLabel lblPorta = new JLabel("Porta:");
-		lblPorta.setForeground(Color.WHITE);
-		lblPorta.setFont(new Font("Dialog", Font.PLAIN, 14));
-		lblPorta.setBounds(22, 75, 46, 30);
-		IPpanel.add(lblPorta);
-
-		textPorta = new JTextField();
-		textPorta.setBorder(null);
-		textPorta.setColumns(10);
-		textPorta.setBounds(78, 81, 90, 23);
-		IPpanel.add(textPorta);
-
-		JButton btnOk = new JButton("OK");
-		btnOk.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				serverPort = Integer.parseInt(textPorta.getText());
-				serverIP = textIP1.getText();
-				if (validPort(serverPort)) {
-					control.setPort(serverPort);
-					lbl_portErro.setText(null);
-				} else {
-					lbl_portErro.setText("*Número de porta não válida");
-				}
-				control.setIp(serverIP);
-				IPpanel.setVisible(false);
-
-			}
-		});
-		btnOk.setForeground(Color.WHITE);
-		btnOk.setFont(new Font("Dialog", Font.BOLD, 14));
-		btnOk.setFocusPainted(false);
-		btnOk.setBorder(null);
-		btnOk.setBackground(new Color(0, 153, 153));
-		btnOk.setBounds(191, 79, 46, 23);
-		IPpanel.add(btnOk);
-
-		lbl_portErro = new JLabel("");
-		lbl_portErro.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		lbl_portErro.setForeground(Color.WHITE);
-		lbl_portErro.setBounds(78, 104, 159, 14);
-		IPpanel.add(lbl_portErro);
-
-		lbl_ipErro = new JLabel("");
-		lbl_ipErro.setForeground(Color.WHITE);
-		lbl_ipErro.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		lbl_ipErro.setBounds(55, 62, 159, 14);
-		IPpanel.add(lbl_ipErro);
-
-		btn_ip = new JButton("");
-		btn_ip.addActionListener(new ActionListener() {
-			boolean show = false;
-
-			public void actionPerformed(ActionEvent arg0) {
-				{
-					if (!show) {
-						IPpanel.setVisible(true);
-						show = true;
-					} else {
-						IPpanel.setVisible(false);
-						show = false;
-					}
-				}
-
-			}
-		});
-		btn_ip.setIcon(new ImageIcon("Icons\\settings (2).png"));
-		btn_ip.setBounds(828, 622, 56, 38);
-		btn_ip.setBackground(Color.getHSBColor(210 / 360.0f, 0.48f, 0.33f));
-		btn_ip.setBorderPainted(false);
-		btn_ip.setContentAreaFilled(false);
-		btn_ip.setFocusPainted(false);
-		logInPanel.add(btn_ip);
-
-		nickErro = new JLabel("");
-		nickErro.setForeground(Color.WHITE);
-		nickErro.setFont(new Font("Dialog", Font.PLAIN, 12));
-		nickErro.setBorder(null);
-		nickErro.setBounds(577, 360, 182, 38);
-		logInPanel.add(nickErro);
-
-		passwordErro = new JLabel("");
-		passwordErro.setForeground(Color.WHITE);
-		passwordErro.setFont(new Font("Dialog", Font.PLAIN, 12));
-		passwordErro.setBorder(null);
-		passwordErro.setBounds(577, 400, 182, 38);
-		logInPanel.add(passwordErro);
 		chatPanel.setBackground(Color.getHSBColor(210 / 360.0f, 0.48f, 0.33f));
 		basePanel.add(chatPanel);
 		chatPanel.setLayout(null);
